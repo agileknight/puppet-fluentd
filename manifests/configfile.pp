@@ -11,6 +11,7 @@ define fluentd::configfile(
 
   # clean up in case of a priority change
   exec { "rm ${wildcard_path}":
+    path   => ['/bin/', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/go/bin'],
     onlyif => "test \$(ls ${wildcard_path} | grep -v ${conf_name} | wc -l) -gt 0",
     before => File[$conf_path],
     notify => Class['fluentd::service'],

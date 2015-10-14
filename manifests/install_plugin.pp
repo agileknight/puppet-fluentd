@@ -17,6 +17,7 @@ define fluentd::install_plugin (
     $plugin_type,
     $ensure      = 'present',
     $plugin_name = $name,
+    $url = undef,
 ) {
     case $plugin_type {
         'file': {
@@ -31,6 +32,14 @@ define fluentd::install_plugin (
                 [$plugin_name]:
                     ensure => $ensure, 
                     require => Class['Fluentd::Packages']
+            }
+        }
+        'url': {
+            fluentd::install_plugin::wget {
+                [$plugin_name]:
+                    ensure => $ensure,
+                    require =>  Class['Fluentd::Packages'],
+                    url => $url
             }
         }
         default: {
