@@ -9,16 +9,13 @@ class fluentd::install_repo::apt () {
         location    => "http://packages.treasuredata.com/debian",
         release     => "lucid",
         repos       => "contrib",
-        include_src => false,
-    }
-
-    file { '/tmp/packages.treasure-data.com.key':
-        ensure => file,
-        source => 'puppet:///modules/fluentd/packages.treasure-data.com.key'
-    }->
-    exec { "import gpg key Treasure Data":
-        command => "/bin/cat /tmp/packages.treasure-data.com.key | apt-key add -",
-        unless  => "/usr/bin/apt-key list | grep -q 'Treasure Data'",
-        notify  => Class['::apt::update'],
+        key 		=> {
+        	'id'	  => '0xea124b4372c1cd00',
+        	'source'  => 'https://packages.treasuredata.com/GPG-KEY-td-agent',
+        	'include' => {
+        		'src' => false,
+        	},
+        },
+        notify      => Exec['apt_update'],
     }
 }

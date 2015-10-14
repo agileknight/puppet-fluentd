@@ -33,7 +33,8 @@ class fluentd::packages (
                 'libyaml-0-2',
             ]:
                 before => Package[$package_name],
-                ensure => $package_ensure
+                ensure => $package_ensure,
+                require => Exec['apt_update'],
             }
             exec {'add user td-agent to group adm':
                 provider => shell,
