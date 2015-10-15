@@ -3,3 +3,15 @@
   <%= key %> <%= val %>
 <% end -%>
 </source>
+<filter <%= @filter['pattern'] %>>
+<% @filter.sort_by{|key,val|key}.each do |key, val| -%>
+<% if key != 'pattern' && key != 'record' -%>
+  <%= key -%> <%= val %>
+<% end -%>
+<% end -%>
+  <record>
+<% @filter['record'].sort_by{|key,val|key}.each do |recordKey, recordVal| -%>
+    <%= recordKey %> <%= recordVal %>
+<% end -%>
+  </record>
+</filter>

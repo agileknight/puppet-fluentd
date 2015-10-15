@@ -3,6 +3,7 @@ define fluentd::source (
   $ensure   = present,
   $priority = 50,
   $config   = {},
+  $filter	= {},
 ) {
   fluentd::configfile { "source-${name}":
     ensure   => $ensure,
