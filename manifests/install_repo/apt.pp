@@ -6,8 +6,8 @@
 class fluentd::install_repo::apt () {
 
     apt::source { 'treasure-data':
-        location    => "http://packages.treasuredata.com/debian",
-        release     => "lucid",
+        location    => "http://packages.treasuredata.com/2/ubuntu/trusty/",
+        release     => "trusty",
         repos       => "contrib",
         key 		=> {
         	'id'	  => '0xea124b4372c1cd00',
