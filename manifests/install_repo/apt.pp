@@ -11,7 +11,7 @@ class fluentd::install_repo::apt () {
         repos        => "contrib",
         architecture => 'amd64',
         key 		 => {
-        	'id'	  => '0xea124b4372c1cd00',
+        	'id'	  => 'C901622B5EC4AF820C38AB861093DB45A12E206F',
         	'source'  => 'https://packages.treasuredata.com/GPG-KEY-td-agent',
         	'include' => {
         		'src' => false,
