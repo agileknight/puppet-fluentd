@@ -3,6 +3,7 @@
   <%= key %> <%= val %>
 <% end -%>
 </source>
+<% if @filter -%>
 <filter <%= @filter['pattern'] %>>
 <% @filter.sort_by{|key,val|key}.each do |key, val| -%>
 <% if key != 'pattern' && key != 'record' -%>
@@ -15,3 +16,4 @@
 <% end -%>
   </record>
 </filter>
+<% end -%>

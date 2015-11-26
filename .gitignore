@@ -2,6 +2,7 @@ pkg/
 Gemfile.lock
 vendor/
 spec/fixtures/modules/
+.idea/
 .vagrant/
 .bundle/
 coverage/
