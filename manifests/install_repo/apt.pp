@@ -14,7 +14,7 @@ class fluentd::install_repo::apt () {
 
     exec { "import gpg key Treasure Data":
         command => "/usr/bin/curl https://packages.treasuredata.com/GPG-KEY-td-agent | apt-key add -",
-        #unless  => "/usr/bin/apt-key list | grep -q 'Treasure Data'", # Treasure Data also greps outdated keys
+        unless  => "/usr/bin/apt-key export 'AB97ACBE' | grep 'PGP PUBLIC KEY BLOCK'",
         notify  => Class['::apt::update'],
     }
 }
